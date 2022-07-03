@@ -1,28 +1,41 @@
 const listContainer = document.querySelector(".list_container");
 const modal = document.querySelector(".modal");
 
+const images = [
+    "images/Luke Skywalker.webp",
+    "images/C-3PO.png",
+    "images/R2-D2.webp",
+    "images/Darth Vader.jpeg",
+    "images/Leia Organa.jpeg",
+    "images/Owen Lars.jpeg",
+    "images/Beru Whitesun lars.webp",
+    "images/R5-D4.jpeg",
+    "images/Biggs Darklighter.webp",
+    "images/Obi-Wan Kenobi.jpeg"
+]
+
 const url = "https://swapi.dev/api/people";
 const fetchZemiData = async () => {
     const response = await fetch(url);
     const data = await response.json();
     const results = data.results;
     console.log(results);
-    for (result of results) {
+    for (let i =0; i< results.length; i++) {
 
         const detailsBox = document.createElement("div");
         detailsBox.setAttribute("class", "detailsBox");
         const listItem = document.createElement("h1");
-        listItem.textContent = result.name;
+        listItem.textContent = results[i].name;
 
         const modalContent = document.createElement("div");
         modalContent.setAttribute("class", "modal_content");
 
         const charName = document.createElement("h1");
-        charName.textContent ="Name :"+ result.name;
+        charName.textContent ="Name :"+ results[i].name;
         const charHeight = document.createElement("h1");
-        charHeight.textContent ="Height: "+ result.height;
+        charHeight.textContent ="Height: "+ results[i].height;
         const charGender = document.createElement("h1");
-        charGender.textContent ="Gender :"+ result.gender;
+        charGender.textContent ="Gender :"+ results[i].gender;
 
 
         modalContent.appendChild(charName);
@@ -30,17 +43,17 @@ const fetchZemiData = async () => {
         modalContent.appendChild(charGender);
 
         const image = document.createElement("img");
-        image.setAttribute("class", "zemi_image")
-        image.setAttribute("src", "https://cdn.vox-cdn.com/thumbor/RCi9YT3r4SnRA3iwrzd4sIW666Y=/0x0:2416x1528/920x613/filters:focal(1077x559:1487x969):format(webp)/cdn.vox-cdn.com/uploads/chorus_image/image/70928477/JTF_FF_000556.0.jpeg")
+        image.setAttribute("class", "brainnyboss_image")
+        image.setAttribute("src", `${images[i]}`)
 
 
         detailsBox.appendChild(image);
         detailsBox.appendChild(listItem);
         listContainer.appendChild(detailsBox);
         
-        modal.appendChild(modalContent);
-
+        
         listItem.addEventListener("click", ()=>{
+            modal.appendChild(modalContent);
                 modal.classList.add("show_modal");
 
         })
@@ -51,6 +64,7 @@ const fetchZemiData = async () => {
     window.addEventListener("click", (e)=>{
         if(e.target == modal){
             modal.classList.remove("show_modal");
+            modal.innerHTML = ""
         }
     })
 

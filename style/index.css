@@ -6,7 +6,7 @@ html {
   box-sizing: border-box;
 }
 body{
-  background:linear-gradient(75deg, purple, grey) ;
+  background:radial-gradient(blue, green) ;
 }
 header{
   font-size: 3rem;
@@ -29,7 +29,7 @@ header{
   place-content: center;
   place-items: center;
 }
-.zemi_image{
+.brainnyboss_image{
 width: 10rem;
 height: 10rem;
 border-radius: 100%;
