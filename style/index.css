@@ -6,7 +6,7 @@ html {
   box-sizing: border-box;
 }
 body{
-  background:radial-gradient(blue, green) ;
+  background:radial-gradient(white, black) ;
 }
 header{
   font-size: 3rem;
